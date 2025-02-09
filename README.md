@@ -1,2 +1,2 @@
-# love-at-first-text
-Analyzing dating bios using NLP to identify patterns in successful profiles
+# Hobbies & Hubby
+Analyzing How Hobbies Influence Dating Success
