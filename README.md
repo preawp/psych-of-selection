@@ -46,7 +46,7 @@ This project explores **how personality traits influence dating selectivity**, a
 This project will explore:  
 - **Statistical correlations** (Are ambitious people pickier? Do fun-loving people match more?)  
 - **Comparison groups** (Low, Medium, High selectivity groups)  
-- **Regression models** (Which traits best predict selectivity?)  
+- **Regression models** (Which traits best predict selectivity?)  //Done, random forest
 
 ---
 
