@@ -58,6 +58,8 @@ We began by testing how personality traits relate to match success using machine
    - **Top predictors were `self_attractiveness`, `self_sincerity`, and `self_ambition`**.  
    - `self_fun` and `self_intelligence` were less predictive of match success.
 
+<img width="816" alt="Screenshot 2025-03-29 at 9 17 07 PM" src="https://github.com/user-attachments/assets/6e1ae7aa-7d6d-45bc-b748-5c928015b86d" />
+
 - **Evaluation:**  
    - Performance assessed using **accuracy**, **precision**, **recall**, **F1-score**, and **confusion matrix**.  
    - Feature importances were visualized with a bar plot.
