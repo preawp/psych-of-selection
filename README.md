@@ -44,28 +44,30 @@ This project explores **how personality traits influence dating selectivity**, a
 ---
 
 ## **📊 Data Analysis & Modeling**  
-We began by testing how personality traits relate to match success using machine learning models.  
+We began by testing how personality traits relate to match success using machine learning models.
 
 ### **✅ Work Completed**  
-- **Regression model (Logistic Regression):**  
-   - Predicts match success based on traits like `self_attractiveness`, `self_fun`, `self_ambition`, etc.  
+- **Logistic Regression Model:**  
+   - Goal: Predict match success based on traits like `self_attractiveness`, `self_fun`, `self_ambition`, etc.  
    - Used `class_weight='balanced'` to address class imbalance (most participants did not match).  
-   - Moderate accuracy but struggled with recall on actual matches.
+   - Result: Moderate overall accuracy, but poor recall for predicting actual matches (label = 1).
 
 - **Random Forest Classifier:**  
-   - Outperformed logistic regression in accuracy and class balance.  
-   - Provided **feature importances**, revealing which traits best predict match success.  
-   - Top predictors included **attractiveness** and **fun**.
+   - Outperformed logistic regression in handling class imbalance and improving recall.  
+   - Returned **feature importances**, helping us understand which traits matter most.  
+   - **Top predictors were `self_attractiveness`, `self_sincerity`, and `self_ambition`**.  
+   - `self_fun` and `self_intelligence` were less predictive of match success.
 
-- **Model Evaluation:**  
-   - Models were evaluated using **accuracy**, **precision**, **recall**, and **F1-score**.  
-   - Feature importance visualized via bar plot for interpretability.
+- **Evaluation:**  
+   - Performance assessed using **accuracy**, **precision**, **recall**, **F1-score**, and **confusion matrix**.  
+   - Feature importances were visualized with a bar plot.
 
 ### **📌 Next Steps**  
-- **Statistical correlations and hypothesis testing:**  
-   - Explore if ambitious people are pickier and if fun-loving people match more.  
-- **Create comparison groups** (Low, Medium, High selectivity) to analyze behavior across levels of pickiness.  
-- **Refine models or test others (e.g., Decision Trees, XGBoost)** depending on results.
+- **Statistical correlation analysis:**  
+   - Are ambitious people more selective?  
+   - Do fun-loving people match more often?  
+- **Selectivity groups (Low, Medium, High):**  
+   - Group participants based on how picky they were and compare behaviors.  
 
 ---
 
