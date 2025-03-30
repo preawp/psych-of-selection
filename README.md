@@ -9,17 +9,14 @@
 ## **📌 Project Overview**  
 Are **ambitious people pickier in dating?** Do **fun-loving people say "yes" more often?** Do **highly attractive people reject more dates?**
 
-This project explores how **personality traits influence dating selectivity**, analyzing whether people with certain traits tend to have **higher standards and fewer matches**. Using real speed dating data, we aim to uncover:  
-- Which personality traits are linked to higher selectivity  
-- Whether attractive people reject more dates  
-- Whether ambitious people are harder to match  
+This project explores how **personality traits influence dating selectivity**, using real speed dating data to investigate whether certain self-perceptions correlate with actual behavior and match outcomes.
 
 ---
 
 ## **🎯 Goals**  
 - Analyze how personality traits relate to dating selectivity  
 - Compare expected vs. actual matches to measure pickiness  
-- Identify whether attractiveness, ambition, intelligence, or fun predicts match likelihood  
+- Predict match likelihood based on personality traits  
 
 ---
 
@@ -29,71 +26,82 @@ This project explores how **personality traits influence dating selectivity**, a
 - [Kaggle Dataset Link](https://www.kaggle.com/datasets/whenamancodes/speed-dating)  
 
 ### **🔍 Features Extracted**  
-- **Personality Traits**: `self_attractiveness`, `self_fun`, `self_ambition`, `self_sincerity`, `self_intelligence`  
-- **Selectivity Indicators**:  
-  - *Expectation vs. Reality*: `expected_matches` vs. `match`  
-  - *Decision Selectivity*: `decision_self` vs. `decision_partner`  
-  - *Self-Perception vs. Reality*: `self_attractiveness` vs. `match`  
+- `self_attractiveness`, `self_fun`, `self_ambition`, `self_sincerity`, `self_intelligence`  
+- Selectivity indicators: `expected_matches`, `decision_self`, `match`  
 
-### **🛠 Data Cleaning & Preparation**  
-- Dropped rows with missing self-ratings (e.g., attractiveness, fun)  
-- Dropped rows with unreliable partner ratings only when needed  
-- Renamed features for clarity (e.g., `attr1_1` → `self_attractiveness`)  
-- Saved cleaned dataset as `cleaned_speed_dating_data.csv`
+### **🛠 Data Cleaning**  
+- Dropped rows with missing self-ratings  
+- Kept partner ratings optional  
+- Renamed features for clarity  
+- Cleaned dataset saved to `data/cleaned_speed_dating_data.csv`
 
 ---
 
-## **📊 Data Analysis & Modeling**  
-We explored how personality traits predict match success using classification models.
+## **📊 Modeling & Prediction**  
+We explored whether personality traits can predict match success.
 
-### ✅ **Work Completed**  
+### ✅ **Models Tested**  
 - **Logistic Regression**  
-  - Predicts match using personality traits  
-  - Used `class_weight='balanced'` for imbalance correction  
-  - Result: Accuracy ~56%, but weak recall and F1 for actual matches  
+  - Accuracy: ~56%  
+  - Struggled with identifying actual matches (low recall/F1 for class 1)
 
-- **Random Forest Classifier**  
-  - Improved performance: Accuracy ~62%, better recall  
-  - Showed feature importances  
-  - **Top predictors**: `self_attractiveness`, `self_sincerity`, `self_ambition`  
-  - Weaker traits: `self_fun`, `self_intelligence`  
+- **Random Forest (Tuned)**  
+  - Accuracy: ~63%  
+  - Much better recall for class 1 (match = yes)  
+  - Top predictors: `self_attractiveness`, `self_sincerity`, `self_ambition`  
 
-#### 📈 **Key Results**  
-- Random Forest predicted **145 actual matches** and **883 non-matches**  
-- Attractiveness had the strongest influence on prediction  
-- Evaluation used: accuracy, precision, recall, F1-score, and confusion matrix  
+- **XGBoost Classifier**  
+  - Highest overall accuracy: **~83%**  
+  - Weak recall for matches (class 1), predicting mostly non-matches  
 
-<img width="726" alt="Feature Importance Bar Chart" src="https://github.com/user-attachments/assets/6e1ae7aa-7d6d-45bc-b748-5c928015b86d" />  
-<img width="726" alt="Confusion Matrix" src="https://github.com/user-attachments/assets/81c45269-b4ac-4641-892a-51447fe155b3" />
+### 📈 **Key Outputs**  
+**🟩 Random Forest – Feature Importance Plot**  
+> *Shows which personality traits had the strongest influence on predictions*  
+<img width="957" alt="Screenshot 2025-03-30 at 1 26 38 AM" src="https://github.com/user-attachments/assets/96c8105d-13a3-47e6-9f92-ba0de5e86aeb" />
+
+**🟪 Random Forest – Confusion Matrix**  
+> *Correctly predicted 145 actual matches. Balanced performance.*  
+<img width="719" alt="Screenshot 2025-03-30 at 1 27 02 AM" src="https://github.com/user-attachments/assets/16c92ea9-fba9-4ecd-a65a-f35a42c3a656" />
+
+**🟦 XGBoost – Confusion Matrix**  
+> *Very high overall accuracy (~83%), but struggled to identify matches (low recall for class 1)*  
+<img width="816" alt="Screenshot 2025-03-30 at 1 30 20 AM" src="https://github.com/user-attachments/assets/0ddc4b8a-675a-4b0b-a326-81cc3da348e0" />
+
+## 📋 **Model Performance Summary**
+
+| Model                | Accuracy | Precision (Match) | Recall (Match) | F1-Score (Match) | Notes |
+|---------------------|----------|-------------------|----------------|------------------|-------|
+| **Logistic Regression** | ~56%     | 0.20              | 0.24           | 0.22             | Linear model, poor at capturing complex patterns. |
+| **Random Forest**        | ~63%     | 0.21              | **0.47**       | 0.29             | Best balance between accuracy and match recall. |
+| **Tuned Random Forest**  | **~63.2%** | 0.21              | **0.47**       | 0.29             | Improved slightly after increasing `n_estimators`. |
+| **XGBoost**              | **~83%**  | 0.39              | **0.07**       | 0.12             | High overall accuracy but fails to detect actual matches. |
 
 ---
 
-## **📌 Statistical Insights**  
-We tested whether traits like ambition and fun are linked to how often participants said “yes” to others.  
-- Grouped participants into Low, Medium, High based on trait levels  
-- Compared “yes” proportions across groups
+## **📌 Statistical Insight (Selectivity)**  
+We grouped participants by trait level (Low / Medium / High) to analyze selectivity.
 
-<img width="842" alt="Screenshot 2025-03-30 at 12 36 31 AM" src="https://github.com/user-attachments/assets/8018372a-7b64-407a-801c-55da618ff7b8" />
-
-### 🔍 **Findings**  
-- **Ambitious people were slightly more selective** (lower yes-rate in high group)  
-- **Fun-loving people said yes more often** (higher yes-rate in high group)  
-- Trends support original hypotheses and will be further validated with statistical tests  
+- **Ambition**: Higher ambition correlated with lower yes-rate  
+- **Fun**: High-fun group said yes more often
+  
+<img width="958" alt="Screenshot 2025-03-30 at 1 27 34 AM" src="https://github.com/user-attachments/assets/5dce0f88-f9cc-45fb-91f2-c993c6df35d7" />
 
 ---
 
-## **📊 Data Visualization**  
-Visual tools used to support analysis:  
-- Bar charts → Yes-rates by trait groups  
-- Confusion matrix → Prediction accuracy breakdown  
-- Feature importance chart → Model interpretability  
+## **📊 Visualizations**  
+- Histogram of trait distributions  
+- Bar plots of yes-rates by trait groups  
+- Confusion matrices (Random Forest, XGBoost)  
+- Feature importance chart  
 
 ---
 
 ## **🛠️ Test Plan**  
-- ✅ **Train-test split** (80/20) for model evaluation  
-- ✅ **Metrics used**: accuracy, precision, recall, F1-score  
-- ✅ Models tested: Logistic Regression, Random Forest  
-- 🔜 **Statistical tests** (e.g., correlation, t-tests) for group comparison  
-- 🔜 Optional: Try new models (e.g., XGBoost) or fine-tune for performance  
+- ✅ 80/20 train-test split  
+- ✅ Used classification metrics: accuracy, precision, recall, F1  
+- ✅ Trained: Logistic Regression, Random Forest, XGBoost  
+- 🔜 Continue statistical testing (e.g., t-tests, correlation)  
+- 🔜 Optional: More model tuning or feature engineering  
+
+---
 
