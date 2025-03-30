@@ -9,7 +9,7 @@
 ## **📌 Project Overview**  
 Are **ambitious people pickier in dating?** Do **fun-loving people say "yes" more often?** Do **highly attractive people reject more dates?**
 
-This project explores how **personality traits influence dating selectivity**, using real speed dating data to investigate whether certain self-perceptions correlate with actual behavior and match outcomes.
+This project explores how **personality traits influence dating selectivity**, using real speed dating data to investigate whether self-perceived traits influence actual dating behavior and match outcomes.
 
 ---
 
@@ -58,7 +58,8 @@ We explored whether personality traits can predict match success.
 **🟩 Random Forest – Feature Importance Plot**  
 > *Shows which personality traits had the strongest influence on predictions*  
 <img width="957" alt="Screenshot 2025-03-30 at 1 26 38 AM" src="https://github.com/user-attachments/assets/96c8105d-13a3-47e6-9f92-ba0de5e86aeb" />
-
+Note: Feature importances are based on the default Random Forest model. Rankings were consistent after tuning (n_estimators = 100)
+> 
 **🟪 Random Forest – Confusion Matrix**  
 > *Correctly predicted 145 actual matches. Balanced performance.*  
 <img width="719" alt="Screenshot 2025-03-30 at 1 27 02 AM" src="https://github.com/user-attachments/assets/16c92ea9-fba9-4ecd-a65a-f35a42c3a656" />
@@ -86,6 +87,7 @@ We grouped participants by trait level (Low / Medium / High) to analyze selectiv
   
 <img width="958" alt="Screenshot 2025-03-30 at 1 27 34 AM" src="https://github.com/user-attachments/assets/5dce0f88-f9cc-45fb-91f2-c993c6df35d7" />
 
+These initial trends align with our hypotheses and will be further explored with statistical tests in the next phase.
 ---
 
 ## **📊 Visualizations**  
@@ -96,12 +98,17 @@ We grouped participants by trait level (Low / Medium / High) to analyze selectiv
 
 ---
 
-## **🛠️ Test Plan**  
-- ✅ 80/20 train-test split  
-- ✅ Used classification metrics: accuracy, precision, recall, F1  
-- ✅ Trained: Logistic Regression, Random Forest, XGBoost  
-- 🔜 Continue statistical testing (e.g., t-tests, correlation)  
-- 🔜 Optional: More model tuning or feature engineering  
+## ✅ Test Plan & Next Steps  
+- Completed:  
+  - 80/20 train-test split  
+  - Used classification metrics: accuracy, precision, recall, F1  
+  - Trained and evaluated: Logistic Regression, Random Forest, XGBoost  
+- In Progress:  
+  - Statistical testing (e.g., t-tests, correlation) to validate behavioral patterns  
+  - Refining selectivity grouping methods  
+- Optional:  
+  - More model tuning or new classifiers (e.g., Decision Tree)  
+  - Additional behavioral insights based on visualizations  
 
 ---
 
