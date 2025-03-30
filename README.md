@@ -58,8 +58,8 @@ We explored whether personality traits can predict match success.
 **🟩 Random Forest – Feature Importance Plot**  
 > *Shows which personality traits had the strongest influence on predictions*  
 <img width="957" alt="Screenshot 2025-03-30 at 1 26 38 AM" src="https://github.com/user-attachments/assets/96c8105d-13a3-47e6-9f92-ba0de5e86aeb" />
-Note: Feature importances are based on the default Random Forest model. Rankings were consistent after tuning (n_estimators = 100)
-> 
+> 📌 *Note: Feature importances are based on the default Random Forest model. Rankings were consistent after tuning (n_estimators = 100).*
+
 **🟪 Random Forest – Confusion Matrix**  
 > *Correctly predicted 145 actual matches. Balanced performance.*  
 <img width="719" alt="Screenshot 2025-03-30 at 1 27 02 AM" src="https://github.com/user-attachments/assets/16c92ea9-fba9-4ecd-a65a-f35a42c3a656" />
