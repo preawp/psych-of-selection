@@ -25,28 +25,47 @@ This project explores **how personality traits influence dating selectivity**, a
 
 ## **📂 Data Collection & Processing**  
 ### **📊 Data Source**  
-- **Speed Dating Experiment Dataset (2002-2004)**
+- **Speed Dating Experiment Dataset (2002–2004)**  
 - [Dataset Link](https://www.kaggle.com/datasets/whenamancodes/speed-dating)  
 
 ### **🔍 Features Extracted**  
-- **Personality Traits:** `attractive`, `funny`, `ambition`, `sincere`, `intelligence`  
+- **Personality Traits:** `self_attractiveness`, `self_fun`, `self_ambition`, `self_sincerity`, `self_intelligence`  
 - **Selectivity Indicators:**  
-   - **Expectation vs. Reality:** `expected_num_matches` vs. `match`  
-   - **Decision Selectivity:** `decision` vs. `decision_o`  
-   - **Self-Perception vs. Reality:** `attractive` vs. `match`  
+   - **Expectation vs. Reality:** `expected_matches` vs. `match`  
+   - **Decision Selectivity:** `decision_self` vs. `decision_partner`  
+   - **Self-Perception vs. Reality:** `self_attractiveness` vs. `match`  
 
 ### **🛠 Data Cleaning & Preparation**  
-- **Handling missing values** and inconsistent responses.  
-- **Standardizing numeric traits** for better comparability.  
-- **Filtering out unreliable or incomplete responses.**  
+- **Dropped rows with missing self-ratings** (attractiveness, fun, etc.) to ensure clean modeling.  
+- **Dropped rows with unreliable partner ratings** only when required.  
+- **Renamed features** for better readability (`attr1_1` → `self_attractiveness`, etc.).  
+- **Saved cleaned dataset** to `data/cleaned_speed_dating_data.csv` for use in modeling.
 
 ---
 
 ## **📊 Data Analysis & Modeling**  
-This project will explore:  
-- **Statistical correlations** (Are ambitious people pickier? Do fun-loving people match more?)  
-- **Comparison groups** (Low, Medium, High selectivity groups)  
-- **Regression models** (Which traits best predict selectivity?)  //Done, random forest
+We began by testing how personality traits relate to match success using machine learning models.  
+
+### **✅ Work Completed**  
+- **Regression model (Logistic Regression):**  
+   - Predicts match success based on traits like `self_attractiveness`, `self_fun`, `self_ambition`, etc.  
+   - Used `class_weight='balanced'` to address class imbalance (most participants did not match).  
+   - Moderate accuracy but struggled with recall on actual matches.
+
+- **Random Forest Classifier:**  
+   - Outperformed logistic regression in accuracy and class balance.  
+   - Provided **feature importances**, revealing which traits best predict match success.  
+   - Top predictors included **attractiveness** and **fun**.
+
+- **Model Evaluation:**  
+   - Models were evaluated using **accuracy**, **precision**, **recall**, and **F1-score**.  
+   - Feature importance visualized via bar plot for interpretability.
+
+### **📌 Next Steps**  
+- **Statistical correlations and hypothesis testing:**  
+   - Explore if ambitious people are pickier and if fun-loving people match more.  
+- **Create comparison groups** (Low, Medium, High selectivity) to analyze behavior across levels of pickiness.  
+- **Refine models or test others (e.g., Decision Trees, XGBoost)** depending on results.
 
 ---
 
