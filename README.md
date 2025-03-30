@@ -1,10 +1,11 @@
 # **Are Some Personality Traits Linked to Being More Selective in Dating?**  
 ### **Exploring Personality, Selectivity, and Match Success in Speed Dating**
 
-** Midterm Report Presentation**  
-https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05
-** Midterm Report Slides**  
-[ https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05](https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing
+**🎥 Midterm Report Presentation:**  
+[https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05](https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05)
+
+**📑 Midterm Report Slides:**  
+[https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing](https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing)
 
 ## **👥 Team Member**  
 **Pimpisut (Preaw) Puttipongkawin**
