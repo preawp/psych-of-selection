@@ -6,9 +6,7 @@
 
 ---
 
-## 🎥 Presentations & Slides
-
-## 📌 Final Deliverables
+## 📌 Final Deliverables (Primary)
 
 **Final Presentation Video:**  
 https://www.youtube.com/watch?v=EB5K1pUrAAw  
@@ -18,7 +16,7 @@ https://docs.google.com/presentation/d/14EORtpNHcX-QAviXGwVSRY0N_2-WjBzQtFBSP3fB
 
 ---
 
-## 🕒 Midterm Deliverables
+## 🕒 Midterm Deliverables (Reference)
 
 **Midterm Presentation Video:**  
 https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05  
@@ -49,8 +47,7 @@ This project explores how **self-perceived personality traits** relate to dating
 
 ## 📂 Data Collection & Processing
 
-**📁 Data Source:** Kaggle (Speed Dating Experiment, 2002–2004)
-
+**📁 Data Source:** Kaggle (Speed Dating Experiment, 2002–2004)  
 **🔑 Features Used:**  
 - Personality traits: `self_attractiveness`, `self_fun`, `self_ambition`, `self_sincerity`, `self_intelligence`  
 - Decision data: `decision_self`, `decision_partner`, `match`, `expected_matches`
@@ -60,8 +57,8 @@ This project explores how **self-perceived personality traits** relate to dating
 - Renamed columns for clarity  
 - Filtered unreliable responses  
 - Saved cleaned version: `cleaned_speed_dating_data.csv`  
-- Calculated each participant’s **yes-rate**  
-- Grouped participants into **High / Medium / Low selectivity**
+- Calculated yes-rate per participant  
+- Grouped participants into selectivity levels (High / Medium / Low)
 
 ---
 
@@ -69,17 +66,25 @@ This project explores how **self-perceived personality traits** relate to dating
 
 ### 🧠 Feature Importance (Random Forest)
 - Top traits: `self_attractiveness`, `self_ambition`, `self_sincerity`  
-- Weak traits: `self_fun`, `self_intelligence`  
-- Helped us decide which features mattered most in predicting matches
+- Weak traits: `self_fun`, `self_intelligence`
+
+**Feature Importance Plot:**  
+![Random Forest Feature Importance](path/to/your/feature_importance_rf.png) <!-- update this path if needed -->
+
+---
 
 ### 📉 Trait-Level Insights (Low vs. High Self-Ratings)
 - High sincerity & intelligence → slightly higher yes-rates  
 - High ambition & attractiveness → slightly lower yes-rates  
-- Fun: no strong pattern  
-- Overall effects were small — no single trait was dominant
+- Fun: no clear pattern  
+- No single trait fully explained openness
+
+**Trait Group Bar Plot:**  
+![Trait Bar Plot](path/to/your/trait_bar_plot.png)
+
+---
 
 ### 📐 T-Test Results
-We used independent t-tests to compare low vs. high trait groups:
 
 | Trait         | P-Value | Result                  |
 |---------------|---------|-------------------------|
@@ -89,55 +94,63 @@ We used independent t-tests to compare low vs. high trait groups:
 | Ambition      | 0.390   | ❌ Not significant       |
 | Fun           | 0.280   | ❌ Not significant       |
 
-→ Sincerity, intelligence, and attractiveness had meaningful behavioral effects
+---
 
 ### 🎭 Trait Interactions
-We explored whether combinations of traits affected behavior:
 
 - **Ambition × Fun:**  
-  → Low Ambition + Low Fun had the highest yes-rate  
+  Low Ambition + Low Fun → highest yes-rate  
 - **Attractiveness × Intelligence:**  
-  → Low Attractiveness + High Intelligence showed surprising openness  
+  Low Attractiveness + High Intelligence → highest yes-rate group
 
-These were not statistically strong, but added depth to our analysis.
+**Interaction Plot (Ambition × Fun):**  
+![Ambition x Fun Plot](path/to/your/ambition_fun_plot.png)
+
+**Interaction Plot (Attractiveness × Intelligence):**  
+![Attr x Intel Plot](path/to/your/attr_intel_plot.png)
 
 ---
 
 ## 🤖 Modeling & Prediction
 
-We tested multiple models to predict whether a participant would receive a match.
+We tested multiple models to predict match success.
 
-### 📌 Logistic Regression
+### 🔹 Logistic Regression
 - Accuracy: ~56%  
-- Very low recall for actual matches (class 1)  
-- Linear model struggled with complex patterns  
-→ **Baseline only**
+- Very low recall for actual matches  
+- Too simple to model real dating patterns  
+> **Baseline only**
 
 ---
 
 ### 🌳 Decision Tree (max_depth=4)
 - Accuracy: 84%  
-- Match recall: 0.01 → almost all predictions = “No Match”  
-- Easy to interpret, but useless for catching matches  
-→ **Not suitable**
+- Match recall: 0.01  
+- Predicted “No Match” for nearly everyone
+
+**Confusion Matrix – Decision Tree:**  
+![Confusion Tree](path/to/confusion_tree.png)
 
 ---
 
 ### 🌲 Random Forest (Tuned)
 - Accuracy: ~63%  
 - Match recall: 0.47  
-- Tuned `n_estimators`, `max_depth`, `min_samples_split`, and used `class_weight='balanced'`  
-- Good balance between detecting matches and avoiding false positives  
-→ **Strong general-purpose model**
+- Used class balancing + hyperparameter tuning  
+> Strong balance model
+
+**Confusion Matrix – Random Forest:**  
+![Confusion RF](path/to/confusion_rf.png)
 
 ---
 
 ### ⚡ XGBoost (Tuned)
 - Accuracy: ~59%  
-- Match recall: improved from 8% → **55%** after tuning  
-- Tuned tree depth, learning rate, boosting weight  
-- F1-score for matches: 0.30  
-→ **Better at finding matches, but still noisy**
+- Match recall: 0.55  
+- Tuned depth, learning rate, and `scale_pos_weight`
+
+**Confusion Matrix – XGBoost:**  
+![Confusion XGB](path/to/confusion_xgb.png)
 
 ---
 
@@ -145,39 +158,40 @@ We tested multiple models to predict whether a participant would receive a match
 
 #### ✅ Equal-Weight Ensemble (RF + XGBoost, 50/50)
 - Accuracy: ~61%  
-- Match recall: 51%  
-- F1-score: 0.30  
-- Caught **135 real matches**  
-→ **Best trade-off overall**
+- Match recall: 0.51  
+- F1 (match): 0.30  
+> Final model — best recall-accuracy balance
 
-#### ⚠️ Weighted Ensemble (70% XGB)
+**Confusion Matrix – Ensemble (50/50):**  
+![Confusion Ensemble](path/to/confusion_ensemble.png)
+
+#### ⚠️ Weighted Ensemble (70% XGBoost)
 - Accuracy: ~34%  
-- Match recall: 85%  
-- Predicted “yes” too often — many false positives  
-→ Too risky, not balanced
+- Recall (match): 0.85  
+- Predicted “yes” too often — overfit to positive class
 
 ---
 
 ## 📊 Model Summary
 
-| Model                  | Accuracy | Recall (Match) | F1 (Match) | Notes                              |
-|------------------------|----------|----------------|------------|-------------------------------------|
-| Logistic Regression    | 56%      | 0.24           | 0.22       | Weak baseline                       |
-| Decision Tree          | 84%      | 0.01           | 0.01       | Overfit, no match detection         |
-| Tuned Random Forest    | 63%      | 0.47           | 0.29       | Strong balance                      |
-| Tuned XGBoost          | 59%      | 0.55           | 0.30       | Good recall, lower precision        |
-| Ensemble (50/50) ✅     | **61%**  | **0.51**       | **0.30**   | ✅ Final model — balanced and solid |
-| Ensemble (70% XGB)     | 33%      | 0.85           | 0.29       | High recall, bad accuracy           |
+| Model                  | Accuracy | Recall (Match) | F1 (Match) | Notes                            |
+|------------------------|----------|----------------|------------|----------------------------------|
+| Logistic Regression    | 56%      | 0.24           | 0.22       | Weak baseline                    |
+| Decision Tree          | 84%      | 0.01           | 0.01       | Overfit, poor recall             |
+| Tuned Random Forest    | 63%      | 0.47           | 0.29       | Great balance                    |
+| Tuned XGBoost          | 59%      | 0.55           | 0.30       | Boosted match detection          |
+| Ensemble (50/50) ✅     | 61%      | 0.51           | 0.30       | ✅ Final model – balanced         |
+| Ensemble (70% XGB)     | 34%      | 0.85           | 0.29       | Too aggressive                   |
 
 ---
 
 ## 💡 Key Findings
 
-- Self-rated **sincerity**, **intelligence**, and **attractiveness** were most related to openness  
-- Participants high in **ambition** tended to be more selective  
-- Personality traits alone are **not strong predictors** of dating behavior  
-- Our final ensemble model caught more than **half of all real matches**, with acceptable accuracy  
-- Even smart models struggle to predict human behavior in dating — but we found real patterns
+- Traits like **sincerity**, **intelligence**, and **attractiveness** are linked to openness  
+- **Ambitious** participants were more selective  
+- No single trait can explain behavior — context matters  
+- Final ensemble model predicts **half of all real matches**  
+- Dating prediction is hard — but there *are* patterns!
 
 ---
 
@@ -186,13 +200,11 @@ We tested multiple models to predict whether a participant would receive a match
 ```bash
 # Clone the repository
 git clone [your-repo-url]
-cd your-repo-name
+cd your-repo-folder
 
 # Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
 
-# Install dependencies
+# Install dependencies using Makefile
 make install
-
-# Run notebooks (EDA, modeling, evaluation)
