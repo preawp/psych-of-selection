@@ -126,3 +126,12 @@ These initial trends align with our hypotheses and will be further explored with
 - However, overall differences were relatively small — suggesting that **self-perception alone doesn’t fully explain dating behavior**.
 - Our best model (an ensemble of Tuned XGBoost + Random Forest) reached **0.53 recall for actual matches**, showing that **real-world attraction is hard to predict, even with personality self-assessments**.
 
+## 🔧 How to Build and Run
+
+To reproduce the results:
+
+1. Clone the repository  
+2. Create a virtual environment and install dependencies  
+```bash
+make install
+
