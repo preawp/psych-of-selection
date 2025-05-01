@@ -29,11 +29,12 @@ https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8
 
 ## 📌 Project Overview
 
-Are **ambitious people pickier in dating?**  
-Do **fun-loving people say “yes” more often?**  
-Do **highly attractive people reject more dates?**
+### ❓ Research Questions
+- Are **ambitious people** pickier in dating?  
+- Do **fun-loving people** say “yes” more often?  
+- Do **highly attractive people** reject more dates?
 
-This project explores how **self-perceived personality traits** relate to dating behavior. We use real speed dating data to test whether self-assessments influence how open or selective people are — and whether those traits help predict match success.
+This project explores how **self-perceived personality traits** relate to dating behavior. Using real-world speed dating data, we investigate whether these traits influence selectivity and match outcomes.
 
 To begin, we visualized how participants rated themselves. Below is the distribution of **self-rated attractiveness** — one of the key traits used in modeling:
 
