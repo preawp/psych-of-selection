@@ -117,3 +117,12 @@ These initial trends align with our hypotheses and will be further explored with
 
 ---
 
+## 💡 Key Findings & Behavioral Takeaways
+
+- Participants who rated themselves **higher in intelligence or sincerity** were more likely to say "yes" to potential matches.
+- Surprisingly, those with **higher self-rated attractiveness or ambition** were slightly more selective — suggesting confidence may increase pickiness.
+- In an interaction plot, the group with **low attractiveness but high intelligence** showed the **highest yes-rate**, hinting that perceived intellect might compensate for lower appearance confidence.
+- T-tests confirmed that sincerity, intelligence, and attractiveness all showed **statistically significant differences** in yes-rates between low and high self-raters.
+- However, overall differences were relatively small — suggesting that **self-perception alone doesn’t fully explain dating behavior**.
+- Our best model (an ensemble of Tuned XGBoost + Random Forest) reached **0.53 recall for actual matches**, showing that **real-world attraction is hard to predict, even with personality self-assessments**.
+
