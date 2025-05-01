@@ -8,11 +8,23 @@
 
 ## 🎥 Presentations & Slides
 
-📽️ **Final Presentation Video:** https://www.youtube.com/watch?v=EB5K1pUrAAw
-🖥️ **Final Slides:** https://docs.google.com/presentation/d/14EORtpNHcX-QAviXGwVSRY0N_2-WjBzQtFBSP3fBOi0/edit
+## 📌 Final Deliverables
 
-📽️ **Midterm Video:** https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05  
-🖥️ **Midterm Slides:** https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing
+**Final Presentation Video:**  
+https://www.youtube.com/watch?v=EB5K1pUrAAw  
+
+**Final Slides:**  
+https://docs.google.com/presentation/d/14EORtpNHcX-QAviXGwVSRY0N_2-WjBzQtFBSP3fBOi0/edit  
+
+---
+
+## 🕒 Midterm Deliverables
+
+**Midterm Presentation Video:**  
+https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05  
+
+**Midterm Slides:**  
+https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing  
 
 ---
 
