@@ -5,6 +5,11 @@
 **Pimpisut (Preaw) Puttipongkawin**
 
 ---
+Midterm Report Presentation:
+https://youtu.be/GfivNqeDmQI?si=onymMymRdp4l3F05
+
+ Midterm Report Slides:
+https://docs.google.com/presentation/d/1KkSF-TpkY1aTzjGL_iEwwzHMdSN_947-DXDuoYH8bKA/edit?usp=sharing
 
 ## **📌 Project Overview**  
 Are **ambitious people pickier in dating?** Do **fun-loving people say "yes" more often?** Do **highly attractive people reject more dates?**
